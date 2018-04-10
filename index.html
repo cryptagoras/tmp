@@ -39,6 +39,7 @@
 		    background-color: #66666666;
 		    padding: 10px;
 		    display: inline-block;
+		    font-size: 200%;
 		}
 		.centerdiv {
 			position: fixed;
@@ -85,7 +86,7 @@
 		<img src="/order-submission-error.png" class="order" id="order" /><br/>
 	</center>
 	<div class="btns">
-		<div class="btn-group"><button class="buy order-btn">Buy</button><button class="sell order-btn">Sell</button></div>
+		<div class="btn-group"><button class="buy order-btn">Simulate Trading</button></div>
 		<div class="finmsg">(Let's see if Bitmex has a sense of humor) Feel free to join <a href="https://www.bitmex.com/register/Dt19Gs">Bitmex</a>, still has the best fin-products</div>
 	</div>
 	<script type="text/javascript">
@@ -141,16 +142,6 @@
 				incOpacity();
 				z += 10;
 				if (z > 90) { z = 90; }
-				el.css('-webkit-transform', 'perspective(100px) translateZ('+z+'px)');
-				el.css('-moz-transform', 'perspective(100px) translateZ('+z+'px)');
-				el.css('transform', 'perspective(100px) translateZ('+z+'px)');
-			});
-			$('.order-btn.sell').on('click', function(e) {
-				e.preventDefault();
-				if (cd === 0) return;
-				incOpacity();
-				z -= 10;
-				if (z < -100) { z = -100; }
 				el.css('-webkit-transform', 'perspective(100px) translateZ('+z+'px)');
 				el.css('-moz-transform', 'perspective(100px) translateZ('+z+'px)');
 				el.css('transform', 'perspective(100px) translateZ('+z+'px)');
