@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DDOSMEX - Your Scaling Solution - Order not Submitted</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cash/1.3.7/cash.min.js" integrity="sha256-FxgCMcaEacWioEbgxUT+wABLjNqCZ0VjmZoA5K+u+f8=" crossorigin="anonymous"></script>
+	<style type="text/css">
+		body {
+			font-family: Helvetica, sans-serif;
+			overflow: hidden;
+		}
+		.wrapper {
+			position: fixed;
+		    top: 40%;
+		    left: 0;
+		    right: 0;
+		    bottom: 100%;
+		    display: inline-block;
+		    height: 200px;
+		}
+		.order {
+			opacity: 0;
+	    	transform: perspective(100px) translateZ(-100px);
+	    	transition: 0.3s all;
+	    	pointer-events: none;
+		}
+		.btns {
+			margin: 0 auto;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			text-align: center;
+		    z-index: 9998;
+		    background-color: #666;
+	        background-color: rgba(102, 102, 102, 0.4);
+		    background-color: #66666666;
+		    padding: 10px;
+		    display: inline-block;
+		}
+		.centerdiv {
+			position: fixed;
+			left: 0;
+			z-index: 9999;
+			right: 0;
+			text-align: center;
+		}
+		.hero {
+			opacity: 0;
+		    transition: 0.3s all;
+		    z-index: 9999;
+		    margin: 10px auto;
+		    background-color: #000000d4;
+		    color: white;
+		    display: inline-block;
+		    padding: 16px;
+		}
+		.finmsg {
+			display: none;
+			color: #fff;
+		}
+		.finbtns {
+			 background-color: #666;
+		}
+		.finbtns a {
+			 color: #12ef00;
+		}
+	</style>
+</head>
+<body>
+	<div class="centerdiv">
+		<center class="hero">
+			<p>Are you killing your fingers trying to get an order through?</p>
+			<p>Fear not!</p>
+			<h1>Presenting DDOSMEX</h1>
+			<p>We use an army of strategically geolocated Botnets that will keep re-submitting your order</p>
+			<p>(i) either until the order goes through <strong>OR</strong> (ii) we bring down the platform</p>
+			<p>There's also the rare <strong>FREE bonus</strong> of getting your order filled 10 times! Wow, right?!?!?</p>
+			<p>All this for the low price of tree fiddy</p>
+		</center>
+	</div>
+	<center class="wrapper">
+		<img src="/order-submission-error.png" class="order" id="order" /><br/>
+	</center>
+	<div class="btns">
+		<div class="btn-group"><button class="buy order-btn">Buy</button><button class="sell order-btn">Sell</button></div>
+		<div class="finmsg">(Let's see if Bitmex has a sense of humor) Feel free to join <a href="https://www.bitmex.com/register/Dt19Gs">Bitmex</a>, still has the best fin-products</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var cd = 10;
+			var el = $('#order');
+			var z = -100;
+			var resultZ = 1;
+			function incOpacity() {
+				el.css('opacity', (Number(el.css('opacity')) || 0.01) * 1.6);
+			}
+
+			function actualBitmexSimulationResult() {
+				var nel = $('<img src="/order-submission-error.png" class="order" />');
+				nel.css('position', 'absolute');
+				nel.css('opacity', 0.8);
+				var zt = Math.ceil((Math.random() * 200) - 100);
+				nel.css('-webkit-transform', 'perspective(100px) translateZ('+zt+'px)');
+				nel.css('-moz-transform', 'perspective(100px) translateZ('+zt+'px)');
+				nel.css('transform', 'perspective(100px) translateZ('+zt+'px)');
+				nel.css('left', Math.floor(Math.random() * 100) + '%');
+				nel.css('top', Math.floor(Math.random() * 100) + '%');
+				nel.css('z-index', ++resultZ > 9997 ? 9997 : resultZ);
+				nel.appendTo(document.body);			
+			}
+
+			function simulateBitmex() {
+				actualBitmexSimulationResult();
+				cd--;
+
+				if (cd === 0) {
+					shillDdosmex();
+				}
+			}
+
+			function shillDdosmex() {
+				setInterval(actualBitmexSimulationResult, 1000);
+				$('.hero').css('opacity', 1);
+				$('.btn-group').css('display', 'none');
+				$('.finmsg').css('display', 'block');
+				$('.btns').addClass('finbtns');
+			}
+
+			$('.order-btn').on('click', function(e) {
+				e.preventDefault();
+				if (cd === 0) return;
+				simulateBitmex();
+			});
+
+			$('.order-btn.buy').on('click', function(e) {
+				e.preventDefault();
+				if (cd === 0) return;
+				incOpacity();
+				z += 10;
+				if (z > 90) { z = 90; }
+				el.css('-webkit-transform', 'perspective(100px) translateZ('+z+'px)');
+				el.css('-moz-transform', 'perspective(100px) translateZ('+z+'px)');
+				el.css('transform', 'perspective(100px) translateZ('+z+'px)');
+			});
+			$('.order-btn.sell').on('click', function(e) {
+				e.preventDefault();
+				if (cd === 0) return;
+				incOpacity();
+				z -= 10;
+				if (z < -100) { z = -100; }
+				el.css('-webkit-transform', 'perspective(100px) translateZ('+z+'px)');
+				el.css('-moz-transform', 'perspective(100px) translateZ('+z+'px)');
+				el.css('transform', 'perspective(100px) translateZ('+z+'px)');
+			});
+		});
+	</script>
+</body>
+</html>
