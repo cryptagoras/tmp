@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DDOSMEX - How to solve Bitmex's Scaling - Order not Submitted(tm)</title>
+	<title>DDOSMEX - How to Solve Bitmex's Scaling Issues - Order not Submitted(tm)</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
@@ -130,8 +130,8 @@
 				nel.css('-webkit-transform', 'perspective(100px) translateZ('+zt+'px)');
 				nel.css('-moz-transform', 'perspective(100px) translateZ('+zt+'px)');
 				nel.css('transform', 'perspective(100px) translateZ('+zt+'px)');
-				nel.css('left', Math.floor(Math.random() * 100) + '%');
-				nel.css('top', Math.floor(Math.random() * 100) + '%');
+				nel.css('left', Math.floor(Math.random() * 80) + '%');
+				nel.css('top', Math.floor(Math.random() * 80) + '%');
 				nel.css('z-index', ++resultZ > 9997 ? 9997 : resultZ);
 				nel.appendTo(document.body);			
 			}
@@ -146,7 +146,6 @@
 			}
 
 			function shillDdosmex() {
-				setInterval(actualBitmexSimulationResult, 1000);
 				$('.hero').css('opacity', 1);
 				$('.btn-group').css('display', 'none');
 				$('.finmsg').css('display', 'block');
@@ -157,6 +156,10 @@
 				e.preventDefault();
 				if (cd === 0) return;
 				simulateBitmex();
+			});
+
+			$('.order-btn').one('click', function(e) {
+				setInterval(actualBitmexSimulationResult, 1000);
 			});
 
 			$('.order-btn.buy').on('click', function(e) {
