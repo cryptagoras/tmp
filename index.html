@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DDOSMEX - Your Scaling Solution - Order not Submitted</title>
+	<title>DDOSMEX - Bitmex's Scaling Solution - Order not Submitted(tm)</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
@@ -11,6 +11,18 @@
 			font-family: Helvetica, sans-serif;
 			overflow: hidden;
 		}
+
+		@keyframes glowing {
+		  0% { box-shadow: 0 0 -10px #21ab21; }
+		  40% { box-shadow: 0 0 20px #21ab21; }
+		  60% { box-shadow: 0 0 20px #21ab21; }
+		  100% { box-shadow: 0 0 -10px #21ab21; }
+		}
+
+		.button-glow {
+		  animation: glowing 5000ms infinite;
+		}
+
 		.wrapper {
 			position: fixed;
 		    top: 40%;
@@ -39,7 +51,7 @@
 		    background-color: #66666666;
 		    padding: 10px;
 		    display: inline-block;
-		    font-size: 150%;
+		    font-size: 200%;
 		}
 		.centerdiv {
 			position: fixed;
@@ -61,12 +73,22 @@
 		.finmsg {
 			display: none;
 			color: #fff;
+			pointer-events: none;
 		}
 		.finbtns {
 			 background-color: #666;
 		}
 		.finbtns a {
 			 color: #12ef00;
+			 pointer-events: auto;
+		}
+		.buy.order-btn {
+			background-color: #21ab21;
+		    border: 0px solid white;
+		    color: white;
+		    font-size: 24px;
+		    padding: 5px 8px;
+		    border-bottom-width: 2px;
 		}
 	</style>
 </head>
@@ -83,10 +105,11 @@
 		</center>
 	</div>
 	<center class="wrapper">
+		Start the simulation of the present state...<br/>
 		<img src="/order-submission-error.png" class="order" id="order" /><br/>
 	</center>
 	<div class="btns">
-		<div class="btn-group"><button class="buy order-btn">Simulate Trading</button></div>
+		<div class="btn-group"><button class="buy order-btn button-glow">Simulate Trading</button></div>
 		<div class="finmsg">(Let's see if Bitmex has a sense of humor) Feel free to join <a href="https://www.bitmex.com/register/Dt19Gs">Bitmex</a>, still has the best fin-products</div>
 	</div>
 	<script type="text/javascript">
