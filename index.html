@@ -109,15 +109,17 @@
 		<img src="/order-submission-error.png" class="order" id="order" /><br/>
 	</center>
 	<div class="btns">
-		<div class="btn-group"><button class="buy order-btn button-glow">Simulate Trading</button></div>
+		<div class="btn-group"><button class="buy order-btn button-glow">Simulate Trading</button> <small id="pgr">(0%)</small></div>
 		<div class="finmsg">(Let's see if Bitmex has a sense of humor) Feel free to join <a href="https://www.bitmex.com/register/Dt19Gs">Bitmex</a>, still has the best fin-products</div>
 	</div>
 	<script type="text/javascript">
 		$(function(){
 			var cd = 10;
 			var el = $('#order');
+			var actualStep = 0; // %
 			var z = -100;
 			var resultZ = 1;
+			var internal;
 			function incOpacity() {
 				el.css('opacity', (Number(el.css('opacity')) || 0.01) * 1.6);
 			}
@@ -134,15 +136,24 @@
 				nel.css('top', Math.floor(Math.random() * 80) + '%');
 				nel.css('z-index', ++resultZ > 9997 ? 9997 : resultZ);
 				nel.appendTo(document.body);			
+				actualStep += 10;
+				if (actualStep >= 100) {
+					actualStep = 100;
+				}
+				if (resultZ > 100) {
+					clearInterval(internal);
+				}
+				$('#pgr').text('(' + actualStep + '%)');
+				if (cd !== 0) {
+					cd--;
+				}
+				if (cd === 0) {
+					shillDdosmex();
+				}
 			}
 
 			function simulateBitmex() {
 				actualBitmexSimulationResult();
-				cd--;
-
-				if (cd === 0) {
-					shillDdosmex();
-				}
 			}
 
 			function shillDdosmex() {
@@ -159,7 +170,7 @@
 			});
 
 			$('.order-btn').one('click', function(e) {
-				setInterval(actualBitmexSimulationResult, 1000);
+				internal = setInterval(actualBitmexSimulationResult, 500);
 			});
 
 			$('.order-btn.buy').on('click', function(e) {
